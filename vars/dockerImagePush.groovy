@@ -1,6 +1,10 @@
-def call(String imageName, String imageTag, String dockerHubUser) {
+def call(Map config) {
+    def image = config.image
+    def tag = config.tag
+
+    echo "🔍 Scanning Docker image ${image}:${tag} with Trivy..."
+
     sh """
-      docker login -u ${dockerHubUser}
-      docker push ${dockerHubUser}/${imageName}:${imageTag}
+        trivy image ${image}:${tag}
     """
 }
