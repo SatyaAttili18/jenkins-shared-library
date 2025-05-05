@@ -1,5 +1,5 @@
 def call(String sonarCredentialId) {
-    withSonarQubeEnv('SonarQubeServer') {
+    withSonarQubeEnv('sonar-api') {
         sh 'mvn sonar:sonar'
     }
 }
